@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="72" viewBox="0 0 1200 72" role="img" aria-label="Transmisión: de la alerta al veredicto, con evidencia que aguanta">
+  <defs>
+    <clipPath id="t0"><rect x="60" y="16" height="40" width="0">
+      <animate attributeName="width" dur="18s" repeatCount="indefinite"
+               keyTimes="0;0.1333;0.3333;1" values="0;515;515;0"/>
+    </rect></clipPath>
+    <clipPath id="t1"><rect x="60" y="16" height="40" width="0">
+      <animate attributeName="width" dur="18s" repeatCount="indefinite"
+               keyTimes="0;0.3333;0.4667;0.6667;1" values="0;0;496;496;0"/>
+    </rect></clipPath>
+    <clipPath id="t2"><rect x="60" y="16" height="40" width="0">
+      <animate attributeName="width" dur="18s" repeatCount="indefinite"
+               keyTimes="0;0.6667;0.8;1" values="0;0;534;534"/>
+    </rect></clipPath>
+  </defs>
+
+  <rect width="1200" height="72" fill="#070d14"/>
+  <rect x="0" y="0" width="1200" height="1" fill="#16262f"/>
+  <rect x="0" y="71" width="1200" height="1" fill="#16262f"/>
+
+  <text x="24" y="45" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+        font-size="17" fill="#2ee6f0" font-weight="700">&gt;</text>
+
+  <!-- transmisión 1 -->
+  <g clip-path="url(#t0)">
+    <text x="60" y="45" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+          font-size="16" fill="#d3e2ee">De la alerta al veredicto, con evidencia que aguanta.
+      <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+               keyTimes="0;0.3067;0.3333;1" values="1;1;0;0"/>
+    </text>
+  </g>
+  <rect y="27" width="9" height="21" fill="#2ee6f0" x="60">
+    <animate attributeName="x" dur="18s" repeatCount="indefinite"
+             keyTimes="0;0.1333;0.3333;1" values="60;577;577;60"/>
+    <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+             keyTimes="0;0.3067;0.3333;1" values="1;1;0;0"/>
+  </rect>
+
+  <!-- transmisión 2 -->
+  <g clip-path="url(#t1)">
+    <text x="60" y="45" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+          font-size="16" fill="#d3e2ee">Escribo la detección que faltaba el turno anterior.
+      <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+               keyTimes="0;0.3333;0.3334;0.64;0.6667;1" values="0;0;1;1;0;0"/>
+    </text>
+  </g>
+  <rect y="27" width="9" height="21" fill="#2ee6f0" x="60" opacity="0">
+    <animate attributeName="x" dur="18s" repeatCount="indefinite"
+             keyTimes="0;0.3333;0.4667;0.6667;1" values="60;60;558;558;60"/>
+    <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+             keyTimes="0;0.3333;0.3334;0.64;0.6667;1" values="0;0;1;1;0;0"/>
+  </rect>
+
+  <!-- transmisión 3 -->
+  <g clip-path="url(#t2)">
+    <text x="60" y="45" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+          font-size="16" fill="#d3e2ee">Una regla sin probar no es cobertura: es una hipótesis.
+      <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+               keyTimes="0;0.6667;0.6668;0.9733;1" values="0;0;1;1;0"/>
+    </text>
+  </g>
+  <rect y="27" width="9" height="21" fill="#2ee6f0" x="60" opacity="0">
+    <animate attributeName="x" dur="18s" repeatCount="indefinite"
+             keyTimes="0;0.6667;0.8;1" values="60;60;596;596"/>
+    <animate attributeName="opacity" dur="18s" repeatCount="indefinite"
+             keyTimes="0;0.6667;0.6668;0.9733;1" values="0;0;1;1;0"/>
+  </rect>
+
+  <text x="1176" y="45" text-anchor="end"
+        font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+        font-size="10" fill="#31485a" letter-spacing="2.6">TRANSMISIÓN EN CURSO</text>
+</svg>

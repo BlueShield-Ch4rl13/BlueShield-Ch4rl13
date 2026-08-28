@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" role="img" aria-label="CH4RL13 — SOC, respuesta a incidentes y DFIR">
+  <defs>
+    <linearGradient id="strip" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"  stop-color="#2ee6f0"/>
+      <stop offset="45%" stop-color="#0e7490"/>
+      <stop offset="100%" stop-color="#0a1018"/>
+    </linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0%" stop-color="#101c26"/>
+      <stop offset="100%" stop-color="#070d14"/>
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0V30" fill="none" stroke="#15242f" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="sweep">
+      <stop offset="0%"   stop-color="#2ee6f0" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#2ee6f0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="scan" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#2ee6f0" stop-opacity="0"/>
+      <stop offset="50%"  stop-color="#2ee6f0" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#2ee6f0" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="marco"><rect x="0" y="0" width="1200" height="340"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#marco)">
+    <rect width="1200" height="340" fill="url(#bg)"/>
+    <rect width="1200" height="340" fill="url(#grid)" opacity="0.6"/>
+
+    <!-- banda de clasificacion superior -->
+    <rect x="0" y="0" width="1200" height="26" fill="#0b141c"/>
+    <rect x="0" y="0" width="1200" height="2" fill="url(#strip)"/>
+    <text x="28" y="18" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#2ee6f0" letter-spacing="3.4">// OPERACIONES DE SEGURIDAD // TLP:CLEAR //</text>
+    <text x="1172" y="18" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#4a6275" letter-spacing="3.4">SECTOR FINANCIERO · 24×7</text>
+
+    <!-- galones -->
+    <g fill="#2ee6f0" opacity="0.9">
+      <path d="M28 62 L46 62 L58 76 L46 90 L28 90 L40 76 Z"/>
+      <path d="M52 62 L70 62 L82 76 L70 90 L52 90 L64 76 Z" opacity="0.55"/>
+      <path d="M76 62 L94 62 L106 76 L94 90 L76 90 L88 76 Z" opacity="0.28"/>
+    </g>
+
+    <text x="126" y="82" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" fill="#4a6275" letter-spacing="4.2">INDICATIVO</text>
+
+    <!-- CH4RL13, con cortes de plantilla -->
+    <text id="callsign" x="26" y="176" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="94" font-weight="700" fill="#eaf4fa" letter-spacing="6">CH4RL13</text>
+    <rect x="22" y="128" width="442" height="5" fill="#070d14"/>
+    <rect x="22" y="152" width="442" height="5" fill="#070d14"/>
+    <rect x="22" y="169" width="442" height="4" fill="#070d14"/>
+
+    <rect x="28" y="196" width="86" height="3" fill="#2ee6f0"/>
+    <text x="28" y="226" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" fill="#2ee6f0" letter-spacing="4.4">SOC · RESPUESTA A INCIDENTES · DFIR</text>
+    <text x="28" y="252" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#6f8698">Vigilo, analizo y respondo a incidentes bajo SLAs críticos.</text>
+
+    <!-- indicadores -->
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8">
+      <rect x="28" y="278" width="190" height="24" fill="#0d2027" stroke="#2ee6f0" stroke-width="1"/>
+      <circle cx="44" cy="290" r="3.5" fill="#2ee6f0">
+        <animate attributeName="opacity" values="1;0.25;1" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <text x="58" y="294" fill="#2ee6f0">2 PANELES EN VIVO</text>
+
+      <rect x="230" y="278" width="140" height="24" fill="none" stroke="#2a3d4d" stroke-width="1"/>
+      <text x="244" y="294" fill="#8ea6bb">5 OPERACIONES</text>
+
+      <rect x="382" y="278" width="200" height="24" fill="none" stroke="#2a3d4d" stroke-width="1"/>
+      <text x="396" y="294" fill="#8ea6bb">MITRE ATT&amp;CK · SIGMA</text>
+
+      <rect x="594" y="278" width="140" height="24" fill="none" stroke="#2a3d4d" stroke-width="1"/>
+      <text x="608" y="294" fill="#8ea6bb">SOC L2 · DFIR</text>
+    </g>
+
+    <!-- radar tactico -->
+    <g transform="translate(1000,178)">
+      <circle r="108" fill="#08121a" stroke="#1b2e3c" stroke-width="1"/>
+      <circle r="80"  fill="none" stroke="#16262f" stroke-width="1"/>
+      <circle r="52"  fill="none" stroke="#16262f" stroke-width="1"/>
+      <circle r="24"  fill="none" stroke="#16262f" stroke-width="1"/>
+      <line x1="-108" y1="0" x2="108" y2="0" stroke="#16262f" stroke-width="1"/>
+      <line x1="0" y1="-108" x2="0" y2="108" stroke="#16262f" stroke-width="1"/>
+
+      <path d="M0 0 L108 0 A108 108 0 0 1 76 76 Z" fill="url(#sweep)">
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite"/>
+      </path>
+      <line x1="0" y1="0" x2="108" y2="0" stroke="#2ee6f0" stroke-width="1.5" opacity="0.9">
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite"/>
+      </line>
+
+      <circle cx="46" cy="-38" r="3.5" fill="#2ee6f0">
+        <animate attributeName="opacity" values="0;1;1;0" dur="4s" begin="0.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="-62" cy="30" r="3.5" fill="#2ee6f0">
+        <animate attributeName="opacity" values="0;1;1;0" dur="4s" begin="2.1s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="18" cy="70" r="3" fill="#f0a72e">
+        <animate attributeName="opacity" values="0;1;1;0" dur="4s" begin="3.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="4" fill="#2ee6f0"/>
+    </g>
+
+    <!-- linea de barrido -->
+    <rect x="0" y="26" width="1200" height="70" fill="url(#scan)" opacity="0.9">
+      <animate attributeName="y" values="26;270;26" dur="7s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- esquineras tacticas -->
+    <g stroke="#2ee6f0" stroke-width="2" fill="none" opacity="0.75">
+      <path d="M12 44 L12 32 L28 32"/>
+      <path d="M1188 44 L1188 32 L1172 32"/>
+      <path d="M12 296 L12 308 L28 308"/>
+      <path d="M1188 296 L1188 308 L1172 308"/>
+    </g>
+    <rect x="0" y="337" width="1200" height="3" fill="url(#strip)"/>
+  </g>
+</svg>
