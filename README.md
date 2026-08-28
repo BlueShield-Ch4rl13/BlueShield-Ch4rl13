@@ -29,7 +29,7 @@ title: Analista SOC con perfil DFIR e incident response
 id: ch4rl13-2026
 status: operativo
 description: |
-    Detecta a un analista de SOC 24x7 del sector financiero que, fuera de turno,
+    Detecta a un analista de SOC 24x7 que, fuera de turno,
     construye lo mismo que hace dentro: triage forense con cadena de custodia,
     detecciones validadas contra ataques reales e infraestructura donde probarlo
     todo antes de que llegue a produccion.
@@ -144,22 +144,7 @@ _Pendiente del primer ciclo de la Action._
 **`AUTOMATIZACIÓN`**<br>
 <img src="https://img.shields.io/badge/-Python-070d14?style=flat-square&logo=python&logoColor=2ee6f0" alt="Python"> <img src="https://img.shields.io/badge/-Bash-070d14?style=flat-square&logo=gnubash&logoColor=2ee6f0" alt="Bash"> <img src="https://img.shields.io/badge/-Docker-070d14?style=flat-square&logo=docker&logoColor=2ee6f0" alt="Docker"> <img src="https://img.shields.io/badge/-Git-070d14?style=flat-square&logo=git&logoColor=2ee6f0" alt="Git">
 
-## `06 // ACREDITACIONES`
-
-| Credencial | Emisor | Cuándo |
-|---|---|---|
-| Máster FP en Ciberseguridad | Stucom | En curso |
-| Google Cloud Security Operations | Google Cloud | 2025 |
-| Ciberseguridad Avanzada IT/OT | — | 2025 |
-| Threat Intelligence 101 | — | 2025 |
-| SOC Analyst | Skillsoft | 2025 |
-| Introduction to Cybersecurity | Cisco | 2025 |
-| CFGS ASIR, perfil ciberseguridad | IFP Innovación en FP | 2023 |
-| CompTIA CySA+ (CS0-003) | CompTIA | En preparación |
-| Blue Team Level 1 | Security Blue Team | En cola |
-| HTB Certified Defensive Security Analyst | Hack The Box | En cola |
-
-## `07 // ESTADO DEL PUESTO`
+## `06 // ESTADO DEL PUESTO`
 
 <p align="center">
   <img src="./assets/estado.svg" alt="Estado del puesto" width="100%">
