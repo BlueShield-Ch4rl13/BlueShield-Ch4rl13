@@ -15,11 +15,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Google_Cloud_Security_Operations-070d14?style=flat-square&logo=googlecloud&logoColor=2ee6f0&labelColor=070d14&color=1b2e3c" alt="Google Cloud SecOps">
   <img src="https://img.shields.io/badge/Threat_Intelligence_101-1b2e3c?style=flat-square" alt="Threat Intelligence 101">
   <img src="https://img.shields.io/badge/Ciberseguridad_IT%2FOT-1b2e3c?style=flat-square" alt="Ciberseguridad IT/OT">
-  <img src="https://img.shields.io/badge/CySA%2B-en_curso-070d14?style=flat-square&labelColor=070d14&color=f0a72e" alt="CySA+ en curso">
-  <img src="https://img.shields.io/badge/BTL1-en_cola-070d14?style=flat-square&labelColor=070d14&color=2a3d4d" alt="BTL1 en cola">
 </p>
 
 ## `00 // FICHA DE IDENTIFICACIÓN`
