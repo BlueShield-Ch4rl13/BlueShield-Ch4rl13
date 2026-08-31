@@ -97,9 +97,9 @@ Detection engineering y purple team. Reglas **Sigma** validadas ejecutando la t�
 ▸ [código](https://github.com/BlueShield-Ch4rl13/Detection-lab)
 
 ```
-   OP-01 ──► OP-05 ──► OP-04 ──► OP-03 ──► OP-02
-   qué pasa  reglas    ejecuta   analiza   investiga
-   ahí fuera validadas y alerta  muestra   el equipo
+   OP-01 ──►   OP-05 ──►   OP-04 ──►   OP-03 ──►   OP-02
+   qué pasa    reglas      ejecuta     analiza     investiga
+   ahí fuera   validadas   y alerta    muestra     el equipo
 ```
 
 ## `03 // ÚLTIMOS DESPLIEGUES`
@@ -113,8 +113,8 @@ _Pendiente del primer ciclo de la Action._
 
 | | Operación | Qué será | Estado |
 |---|---|---|---|
-| **`OP-06`** | Detection Pack | Catálogo con triple mapeo: Zero Trust (NIST 800-207, CISA ZTMM 2.0), cumplimiento (ENS, NIS2, ISO 27001/22301, DORA, RGPD) y ataques en Sigma. Genera Wazuh y Splunk desde una sola fuente. | `LISTO PARA PUBLICAR` |
-| **`OP-07`** | Splunk SOC Lab | SIEM en Docker Compose: ingesta por Forwarder y HEC, índices y sourcetypes en serio, dashboards nativos y panel contra la API REST. | `EN CONSTRUCCIÓN` |
+| **`OP-06`** | Detection Pack | Catálogo con triple mapeo: Zero Trust (NIST 800-207, CISA ZTMM 2.0), cumplimiento (ENS, NIS2, ISO 27001/22301, DORA, RGPD) y ataques en Sigma. Genera Wazuh y Splunk desde una sola fuente. | `EN CONSTRUCCIÓN` |
+| **`OP-07`** | Splunk SOC Lab | SIEM en Docker Compose: ingesta por Forwarder y HEC, índices y sourcetypes en serio, dashboards nativos y panel contra la API REST. | `EN PLANIFICACIÓN` |
 | **`OP-08`** | Writeups de incidente | Casos reales anonimizados con metodología NIST SP 800-61, mapeo ATT&CK, TLP y línea temporal desde los artefactos. | `EN REDACCIÓN` |
 | **`OP-09`** | Panel de Malpipe | El frontal público de `OP-03`. | `EN PLANIFICACIÓN` |
 
