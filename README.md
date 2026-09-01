@@ -106,7 +106,7 @@ Detection engineering y purple team. Reglas **Sigma** validadas ejecutando la t�
 
 <!-- Este bloque lo reescribe scripts/generar_perfil.py cada día. No editar a mano. -->
 <!-- INICIO:DESPLIEGUES -->
-_Pendiente del primer ciclo de la Action._
+_Sin actividad pública reciente._
 <!-- FIN:DESPLIEGUES -->
 
 ## `04 // PRÓXIMAS OPERACIONES`
