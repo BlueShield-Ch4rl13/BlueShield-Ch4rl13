@@ -4,7 +4,7 @@
 <rect width="1200" height="190" fill="url(#g)" opacity="0.6"/>
 <rect width="1200" height="2" fill="url(#s)"/>
 <text x="28" y="34" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#2ee6f0" letter-spacing="3.4">// ESTADO DEL PUESTO //</text>
-<text x="1172" y="34" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#31485a" letter-spacing="2.4">ACTUALIZADO 01/09/2026 12:47 UTC</text>
+<text x="1172" y="34" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#31485a" letter-spacing="2.4">ACTUALIZADO 02/09/2026 11:01 UTC</text>
 <rect x="28" y="54" width="272" height="86" fill="#0b141c" stroke="#1c2b38"/>
 <rect x="28" y="54" width="272" height="2" fill="#2ee6f0" opacity="0.55"/>
 <text x="46" y="102" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="700" fill="#eaf4fa">9</text>
