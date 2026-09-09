@@ -26,10 +26,9 @@ title: Analista SOC con perfil DFIR e incident response
 id: ch4rl13-2026
 status: operativo
 description: |
-    Detecta a un analista de SOC 24x7 que, fuera de turno,
-    construye lo mismo que hace dentro: triage forense con cadena de custodia,
-    detecciones validadas contra ataques reales e infraestructura donde probarlo
-    todo antes de que llegue a produccion.
+    Detecta a un analista de SOC, construye lo mismo que hace dentro:
+    triage forense con cadena de custodia,
+    detecciones validadas contra ataques reales e infraestructura.
 references:
     - https://carlosvillalbalagos.com
     - https://cti.carlosvillalbalagos.com
