@@ -51,7 +51,7 @@ detection:
         operaciones_en_produccion: 2
         repositorios_publicos: 10
     filter_ruido:
-        proyecto: solo_teoria
+        proyecto: teoria & practica
     condition: selection_rol and selection_prueba and not filter_ruido
 falsepositives:
     - Perfiles que enumeran herramientas sin nada desplegado detras
