@@ -57,6 +57,10 @@ def api(ruta: str):
     except urllib.error.HTTPError as e:
         print(f"  aviso: {ruta} devolvio {e.code}", file=sys.stderr)
         return None
+    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError) as e:
+        # Red caida, timeout o JSON corrupto: se avisa y se sigue sin tocar nada.
+        print(f"  aviso: {ruta} fallo ({type(e).__name__}: {e})", file=sys.stderr)
+        return None
 
 
 def recoger():
@@ -68,7 +72,8 @@ def recoger():
         if r.get("language"):
             lenguajes[r["language"]] = lenguajes.get(r["language"], 0) + 1
 
-    eventos = api(f"/users/{USUARIO}/events/public?per_page=100") or []
+    eventos_raw = api(f"/users/{USUARIO}/events/public?per_page=100")
+    eventos = eventos_raw or []
     empujes = [e for e in eventos if e.get("type") == "PushEvent"]
     commits = sum(len(e["payload"].get("commits", [])) for e in empujes)
 
@@ -78,6 +83,7 @@ def recoger():
         "commits_recientes": commits,
         "paneles": PANELES,
         "eventos": eventos,
+        "eventos_ok": eventos_raw is not None,  # False = la API de eventos fallo (no pisar el bloque)
         "repos_detalle": repos,
     }
 
@@ -86,6 +92,12 @@ def recoger():
 # Panel SVG
 # ─────────────────────────────────────────────────────────────────────
 MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+
+
+def esc(t) -> str:
+    """Escapa texto para interpolarlo con seguridad dentro del SVG/XML."""
+    return (str(t).replace("&", "&amp;").replace("<", "&lt;")
+            .replace(">", "&gt;").replace('"', "&quot;"))
 
 
 def generar_svg(d) -> str:
@@ -125,7 +137,7 @@ def generar_svg(d) -> str:
                       f'fill="#5d7a90" letter-spacing="2">{etiqueta}</text>')
 
     if d["lenguajes"]:
-        texto = "  ·  ".join(f"{k} ({v})" for k, v in d["lenguajes"])
+        texto = "  ·  ".join(f"{esc(k)} ({esc(v)})" for k, v in d["lenguajes"])
         partes.append(f'<text x="28" y="168" font-family="{MONO}" font-size="12" fill="#6f8698">'
                       f'ARSENAL EN USO   {texto}</text>')
 
@@ -172,16 +184,26 @@ def main() -> int:
         return 1
 
     SALIDA_SVG.parent.mkdir(parents=True, exist_ok=True)
-    SALIDA_SVG.write_text(generar_svg(d), encoding="utf-8")
-    print(f"  {SALIDA_SVG.relative_to(RAIZ)}: {d['repos']} repos, "
-          f"{d['commits_recientes']} commits recientes")
+    nuevo_svg = generar_svg(d)
+    _sin_hora = lambda x: re.sub(r"ACTUALIZADO \d{2}/\d{2}/\d{4} \d{2}:\d{2} UTC", "", x)
+    if not d.get("eventos_ok", True) and SALIDA_SVG.exists():
+        # Sin eventos, "commits recientes" saldria a 0: se conserva el panel actual.
+        print(f"  {SALIDA_SVG.relative_to(RAIZ)}: la API de eventos fallo; se conserva el panel actual", file=sys.stderr)
+    elif SALIDA_SVG.exists() and _sin_hora(SALIDA_SVG.read_text(encoding="utf-8")) == _sin_hora(nuevo_svg):
+        print(f"  {SALIDA_SVG.relative_to(RAIZ)}: sin cambios de fondo, no se reescribe (evita commit de ruido)")
+    else:
+        SALIDA_SVG.write_text(nuevo_svg, encoding="utf-8")
+        print(f"  {SALIDA_SVG.relative_to(RAIZ)}: {d['repos']} repos, "
+              f"{d['commits_recientes']} commits recientes")
 
-    if README.exists() and MARCA_INI in README.read_text(encoding="utf-8"):
+    if not d.get("eventos_ok", True):
+        print("  README.md: la API de eventos fallo; se conserva el bloque actual de despliegues", file=sys.stderr)
+    elif README.exists() and MARCA_INI in README.read_text(encoding="utf-8"):
         texto = README.read_text(encoding="utf-8")
         bloque = generar_despliegues(d)
         nuevo = re.sub(
             re.escape(MARCA_INI) + r".*?" + re.escape(MARCA_FIN),
-            f"{MARCA_INI}\n{bloque}\n{MARCA_FIN}",
+            lambda _: f"{MARCA_INI}\n{bloque}\n{MARCA_FIN}",  # funcion: no interpreta \1, \g<> ni \ de los mensajes de commit
             texto,
             flags=re.S,
         )
