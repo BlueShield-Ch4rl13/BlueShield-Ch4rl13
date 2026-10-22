@@ -28,7 +28,7 @@ status: operativo
 description: |
     Detecta a un analista de SOC, construye lo mismo que hace dentro:
     triage forense con cadena de custodia,
-    detecciones validadas contra ataques reales,
+    detecciones con su prueba de ataque asignada,
     respuesta automatica que sabe cuando no actuar
     e infraestructura.
 references:
@@ -64,7 +64,7 @@ Cada afirmación tiene un repositorio detrás. Si algo de aquí no se sostiene a
 
 | Capacidad | Dónde está la prueba |
 |---|---|
-| **Detection as code** — 127 reglas Sigma validadas con Atomic Red Team y desplegadas en Splunk, Sentinel, Wazuh y Elastic, con mapeo Zero Trust y normativo | [Detection-lab](https://github.com/BlueShield-Ch4rl13/Detection-lab) |
+| **Detection as code** — 127 reglas Sigma mapeadas a ATT&CK y a pruebas de Atomic Red Team, convertidas a Splunk, Sentinel, Wazuh y Elastic, con mapeo Zero Trust y normativo | [Detection-lab](https://github.com/BlueShield-Ch4rl13/Detection-lab) |
 | **Respuesta automática multi-SIEM y multi-SOAR** — los playbooks ejecutados con una política escrita en código: qué se contiene solo y qué espera a una persona | [ResponseLab](https://github.com/BlueShield-Ch4rl13/ResponseLab) |
 | **Triage forense multiplataforma** con cadena de custodia y veredicto razonado | [FtriageDFIR](https://github.com/BlueShield-Ch4rl13/FtriageDFIR) · [panel en vivo](https://dfir.carlosvillalbalagos.com) |
 | **Despliegue y ajuste de SIEM** — Wazuh, Suricata y detección en kernel; Splunk con ingesta, índices y reglas como código | [Infra-SocAnalyst](https://github.com/BlueShield-Ch4rl13/Infra-SocAnalyst) · [SplunkLab](https://github.com/BlueShield-Ch4rl13/SplunkLab) |
@@ -76,7 +76,7 @@ Cada afirmación tiene un repositorio detrás. Si algo de aquí no se sostiene a
 
 <img src="https://img.shields.io/badge/OP--01-070d14?style=flat-square&labelColor=070d14&color=2ee6f0" alt="OP-01"> **NEWS CTI** &nbsp; <img src="https://img.shields.io/badge/%E2%97%8F_OPERATIVO-0d2027?style=flat-square&labelColor=0d2027&color=2ee6f0" alt="Operativo"><br>
 Panel de ciberamenazas que se responde solo. Prioriza **por explotación activa, no por CVSS teórico**: un 7.5 que ya está en el catálogo KEV pesa más que un 9.8 sin exploit conocido. Sus indicadores alimentan cada decisión de ResponseLab.<br>
-<img src="https://img.shields.io/badge/-Python-070d14?style=flat-square&logo=python&logoColor=2ee6f0" alt="Python"> <img src="https://img.shields.io/badge/-KEV_CISA-1b2e3c?style=flat-square" alt="KEV CISA"> <img src="https://img.shields.io/badge/-CVE-1b2e3c?style=flat-square" alt="CVE"> &nbsp; `6.000 IoCs en seguimiento` `4 feeds + 3 de enriquecimiento` `refresco 6 h`<br>
+<img src="https://img.shields.io/badge/-Python-070d14?style=flat-square&logo=python&logoColor=2ee6f0" alt="Python"> <img src="https://img.shields.io/badge/-KEV_CISA-1b2e3c?style=flat-square" alt="KEV CISA"> <img src="https://img.shields.io/badge/-CVE-1b2e3c?style=flat-square" alt="CVE"> &nbsp; `~2.000 IoCs por refresco` `4 feeds + 3 de enriquecimiento` `refresco 6 h`<br>
 ▸ [**abrir panel**](https://cti.carlosvillalbalagos.com) &nbsp; ▸ [código](https://github.com/BlueShield-Ch4rl13/ScriptNewsCTI)
 
 <img src="https://img.shields.io/badge/OP--02-070d14?style=flat-square&labelColor=070d14&color=2ee6f0" alt="OP-02"> **FTRIAGE DFIR** &nbsp; <img src="https://img.shields.io/badge/%E2%97%8F_OPERATIVO-0d2027?style=flat-square&labelColor=0d2027&color=2ee6f0" alt="Operativo"><br>
@@ -85,7 +85,7 @@ Triage forense sobre tres sistemas. Recolecta en el **orden de volatilidad de la
 ▸ [**abrir panel**](https://dfir.carlosvillalbalagos.com) &nbsp; ▸ [código](https://github.com/BlueShield-Ch4rl13/FtriageDFIR)
 
 <img src="https://img.shields.io/badge/OP--03-070d14?style=flat-square&labelColor=070d14&color=2ee6f0" alt="OP-03"> **MALPIPE** &nbsp; <img src="https://img.shields.io/badge/%E2%97%8F_OPERATIVO-0d2027?style=flat-square&labelColor=0d2027&color=2ee6f0" alt="Operativo"> <img src="https://img.shields.io/badge/%E2%97%90_PANEL_EN_CONSTRUCCI%C3%93N-070d14?style=flat-square&labelColor=070d14&color=f0a72e" alt="Panel en construcción"><br>
-Análisis de malware estático y dinámico. Detona la muestra en aislado, extrae indicadores y produce un informe listo para alimentar la inteligencia. Cierra el hueco entre «tengo un fichero raro» y «sé qué buscar en el resto del parque»: su veredicto, enviado a ResponseLab, propone bloquear el hash en toda la flota.<br>
+Análisis de malware estático y dinámico. La muestra se detona en un sandbox gestionado (tria.ge), nunca en la máquina propia; extrae indicadores y produce un informe listo para alimentar la inteligencia. Cierra el hueco entre «tengo un fichero raro» y «sé qué buscar en el resto del parque»: su veredicto, enviado a ResponseLab, propone bloquear el hash en toda la flota.<br>
 <img src="https://img.shields.io/badge/-Python-070d14?style=flat-square&logo=python&logoColor=2ee6f0" alt="Python"> <img src="https://img.shields.io/badge/-Docker-070d14?style=flat-square&logo=docker&logoColor=2ee6f0" alt="Docker"> <img src="https://img.shields.io/badge/-YARA-1b2e3c?style=flat-square" alt="YARA"> &nbsp; `detonación aislada` `extracción de IoCs` `ATT&CK`<br>
 ▸ [código](https://github.com/BlueShield-Ch4rl13/Malpipe)
 
@@ -95,7 +95,7 @@ SOC completo con detección en **tres capas**: Suricata ve el C2 aunque el endpo
 ▸ [código](https://github.com/BlueShield-Ch4rl13/Infra-SocAnalyst)
 
 <img src="https://img.shields.io/badge/OP--05-070d14?style=flat-square&labelColor=070d14&color=2ee6f0" alt="OP-05"> **DETECTION-LAB** &nbsp; <img src="https://img.shields.io/badge/%E2%97%8F_OPERATIVO-0d2027?style=flat-square&labelColor=0d2027&color=2ee6f0" alt="Operativo"><br>
-Detection engineering y purple team. Reglas **Sigma** validadas ejecutando la técnica real con Atomic Red Team y generadas para **cuatro SIEM** desde una sola fuente. Una regla que nunca se ha probado contra el ataque que dice detectar no es cobertura, es una hipótesis. Incluye el *Detection Pack* que estaba planificado: mapeo Zero Trust (NIST 800-207, CISA ZTMM 2.0) y normativo (ENS, NIS2, DORA, RGPD, ISO 27001/22301), y los 15 playbooks de respuesta que ejecuta ResponseLab.<br>
+Detection engineering y purple team. Reglas **Sigma** generadas para **cuatro SIEM** desde una sola fuente, cada una con su técnica ATT&CK y su prueba de Atomic Red Team asignada; el estado real de cada una (probada, detectada o pendiente) está en `purple/atomic-map.md`. Una regla que nunca se ha probado contra el ataque que dice detectar no es cobertura, es una hipótesis, y el mapa lo dice regla a regla. Incluye el *Detection Pack* que estaba planificado: mapeo Zero Trust (NIST 800-207, CISA ZTMM 2.0) y normativo (ENS, NIS2, DORA, RGPD, ISO 27001/22301), y los 15 playbooks de respuesta que ejecuta ResponseLab.<br>
 <img src="https://img.shields.io/badge/-Sigma-1b2e3c?style=flat-square" alt="Sigma"> <img src="https://img.shields.io/badge/-Atomic_Red_Team-1b2e3c?style=flat-square" alt="Atomic Red Team"> <img src="https://img.shields.io/badge/-MITRE_ATT%26CK-1b2e3c?style=flat-square" alt="MITRE ATT&CK"> <img src="https://img.shields.io/badge/-Splunk-070d14?style=flat-square&logo=splunk&logoColor=2ee6f0" alt="Splunk"> <img src="https://img.shields.io/badge/-Sentinel-070d14?style=flat-square&logo=microsoftazure&logoColor=2ee6f0" alt="Sentinel"> <img src="https://img.shields.io/badge/-Wazuh-1b2e3c?style=flat-square" alt="Wazuh"> <img src="https://img.shields.io/badge/-Elastic-070d14?style=flat-square&logo=elastic&logoColor=2ee6f0" alt="Elastic"> &nbsp; `127 reglas Sigma` `4 SIEM` `15 playbooks`<br>
 ▸ [código](https://github.com/BlueShield-Ch4rl13/Detection-lab)
 
@@ -112,7 +112,7 @@ Respuesta a incidentes como código, multi-SIEM y multi-SOAR. Ejecuta los playbo
 ```
    OP-01 ──►  OP-05 ──►  OP-04 · OP-06 ──►  OP-07 ──►  OP-02 · OP-03
    qué pasa   reglas     los SIEM           responde   investiga equipo
-   ahí fuera  validadas  alertan            solo       y muestra
+   ahí fuera  mapeadas   alertan            solo       y muestra
 ```
 
 ## `03 // ÚLTIMOS DESPLIEGUES`

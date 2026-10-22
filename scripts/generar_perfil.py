@@ -26,7 +26,7 @@ import re
 import sys
 import urllib.error
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 USUARIO = "BlueShield-Ch4rl13"
@@ -39,6 +39,11 @@ MARCA_FIN = "<!-- FIN:DESPLIEGUES -->"
 # Operaciones con panel publico. Se cuentan aparte porque es la cifra que
 # de verdad diferencia el perfil.
 PANELES = 2
+
+# Ventana de "commits recientes" y autores que no cuentan como trabajo propio
+# (los bots que refrescan datos cada pocas horas inflarian la cifra).
+DIAS_RECIENTES = 30
+BOTS = {"github-actions[bot]", "dependabot[bot]", "cti-bot"}
 
 
 def api(ruta: str):
@@ -72,18 +77,35 @@ def recoger():
         if r.get("language"):
             lenguajes[r["language"]] = lenguajes.get(r["language"], 0) + 1
 
-    eventos_raw = api(f"/users/{USUARIO}/events/public?per_page=100")
-    eventos = eventos_raw or []
-    empujes = [e for e in eventos if e.get("type") == "PushEvent"]
-    commits = sum(len(e["payload"].get("commits", [])) for e in empujes)
+    # Los commits se leen repo a repo. Antes salian de la API de eventos, que
+    # en 2025 dejo de incluir la lista de commits en los PushEvent: el perfil
+    # decia "sin actividad publica reciente" aunque hubiera commits de ese dia.
+    desde = (datetime.now(timezone.utc) - timedelta(days=DIAS_RECIENTES)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    commits, fallos = [], 0
+    for r in repos:
+        lista = api(f"/repos/{r['full_name']}/commits?since={desde}&per_page=100")
+        if lista is None:
+            fallos += 1
+            continue
+        for c in lista:
+            autor = (c.get("author") or {}).get("login") or ""
+            nombre = ((c.get("commit") or {}).get("author") or {}).get("name") or ""
+            if autor in BOTS or nombre in BOTS or (c.get("author") or {}).get("type") == "Bot":
+                continue
+            commits.append({
+                "repo": r["name"], "full_name": r["full_name"], "sha": c["sha"],
+                "mensaje": ((c.get("commit") or {}).get("message") or "").split("\n")[0].strip(),
+                "fecha": ((c.get("commit") or {}).get("author") or {}).get("date") or "",
+            })
+    commits.sort(key=lambda c: c["fecha"], reverse=True)
 
     return {
         "repos": len(repos),
         "lenguajes": sorted(lenguajes.items(), key=lambda x: -x[1])[:4],
-        "commits_recientes": commits,
+        "commits_recientes": len(commits),
         "paneles": PANELES,
-        "eventos": eventos,
-        "eventos_ok": eventos_raw is not None,  # False = la API de eventos fallo (no pisar el bloque)
+        "commits": commits,
+        "eventos_ok": fallos < len(repos),  # False = no se pudo leer ningun repo (no pisar el bloque)
         "repos_detalle": repos,
     }
 
@@ -123,7 +145,7 @@ def generar_svg(d) -> str:
     celdas = [
         (str(d["repos"]), "REPOSITORIOS"),
         (str(d["paneles"]), "PANELES EN VIVO"),
-        (str(d["commits_recientes"]), "COMMITS RECIENTES"),
+        (str(d["commits_recientes"]), f"COMMITS ({DIAS_RECIENTES} DIAS)"),
         (str(len(d["lenguajes"])), "LENGUAJES"),
     ]
     w, hueco, x0 = 272, 16, 28
@@ -152,22 +174,14 @@ def generar_svg(d) -> str:
 def generar_despliegues(d, maximo=5) -> str:
     lineas = []
     vistos = set()
-    for e in d["eventos"]:
-        if e.get("type") != "PushEvent":
+    for c in d["commits"]:
+        clave = (c["repo"], c["mensaje"])
+        if clave in vistos or len(c["mensaje"]) < 4:
             continue
-        repo = e["repo"]["name"].split("/")[-1]
-        for c in reversed(e["payload"].get("commits", [])):
-            msg = c["message"].split("\n")[0].strip()
-            clave = (repo, msg)
-            if clave in vistos or len(msg) < 4:
-                continue
-            vistos.add(clave)
-            fecha = datetime.strptime(e["created_at"], "%Y-%m-%dT%H:%M:%SZ").strftime("%d/%m")
-            sha = c["sha"][:7]
-            url = f"https://github.com/{e['repo']['name']}/commit/{c['sha']}"
-            lineas.append(f"`{fecha}` **{repo}** — {msg} · [`{sha}`]({url})")
-            if len(lineas) >= maximo:
-                break
+        vistos.add(clave)
+        fecha = datetime.strptime(c["fecha"], "%Y-%m-%dT%H:%M:%SZ").strftime("%d/%m") if c["fecha"] else "--/--"
+        url = f"https://github.com/{c['full_name']}/commit/{c['sha']}"
+        lineas.append(f"`{fecha}` **{c['repo']}** — {c['mensaje']} · [`{c['sha'][:7]}`]({url})")
         if len(lineas) >= maximo:
             break
 
@@ -187,8 +201,8 @@ def main() -> int:
     nuevo_svg = generar_svg(d)
     _sin_hora = lambda x: re.sub(r"ACTUALIZADO \d{2}/\d{2}/\d{4} \d{2}:\d{2} UTC", "", x)
     if not d.get("eventos_ok", True) and SALIDA_SVG.exists():
-        # Sin eventos, "commits recientes" saldria a 0: se conserva el panel actual.
-        print(f"  {SALIDA_SVG.relative_to(RAIZ)}: la API de eventos fallo; se conserva el panel actual", file=sys.stderr)
+        # Sin commits legibles, "commits recientes" saldria a 0: se conserva el panel actual.
+        print(f"  {SALIDA_SVG.relative_to(RAIZ)}: no se pudo leer ningun repo; se conserva el panel actual", file=sys.stderr)
     elif SALIDA_SVG.exists() and _sin_hora(SALIDA_SVG.read_text(encoding="utf-8")) == _sin_hora(nuevo_svg):
         print(f"  {SALIDA_SVG.relative_to(RAIZ)}: sin cambios de fondo, no se reescribe (evita commit de ruido)")
     else:
@@ -197,7 +211,7 @@ def main() -> int:
               f"{d['commits_recientes']} commits recientes")
 
     if not d.get("eventos_ok", True):
-        print("  README.md: la API de eventos fallo; se conserva el bloque actual de despliegues", file=sys.stderr)
+        print("  README.md: no se pudo leer ningun repo; se conserva el bloque actual de despliegues", file=sys.stderr)
     elif README.exists() and MARCA_INI in README.read_text(encoding="utf-8"):
         texto = README.read_text(encoding="utf-8")
         bloque = generar_despliegues(d)
