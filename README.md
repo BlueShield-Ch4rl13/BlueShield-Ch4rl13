@@ -119,7 +119,11 @@ Respuesta a incidentes como código, multi-SIEM y multi-SOAR. Ejecuta los playbo
 
 <!-- Este bloque lo reescribe scripts/generar_perfil.py cada día. No editar a mano. -->
 <!-- INICIO:DESPLIEGUES -->
-_Sin actividad pública reciente._
+`22/10` **BlueShield-Ch4rl13** — dependabot: actualizaciones mensuales agrupadas por ecosistema · [`5e54ace`](https://github.com/BlueShield-Ch4rl13/BlueShield-Ch4rl13/commit/5e54aced8beaeced02551c91f3adfc42043b92ae)<br>
+`22/10` **FtriageDFIR** — dependabot: actualizaciones mensuales agrupadas por ecosistema · [`756c69e`](https://github.com/BlueShield-Ch4rl13/FtriageDFIR/commit/756c69e5523ba4303272bed4c27527137570c49c)<br>
+`22/10` **ScriptNewsCTI** — deja de versionar data/ioc_state.json · [`6832aca`](https://github.com/BlueShield-Ch4rl13/ScriptNewsCTI/commit/6832aca4aa10e90fdf1a4765909c830515859f9b)<br>
+`22/10` **ScriptNewsCTI** — dependabot: actualizaciones mensuales agrupadas por ecosistema · [`4e18ba5`](https://github.com/BlueShield-Ch4rl13/ScriptNewsCTI/commit/4e18ba592e918a6883bc94c1e65f3141b0cedaae)<br>
+`22/10` **Malpipe** — dependabot: actualizaciones mensuales agrupadas por ecosistema · [`34ac25c`](https://github.com/BlueShield-Ch4rl13/Malpipe/commit/34ac25cfdb88e89f4b89a1bf485b75fb5b7abc72)
 <!-- FIN:DESPLIEGUES -->
 
 ## `04 // PRÓXIMAS OPERACIONES`
