@@ -10,6 +10,7 @@
   <a href="https://carlosvillalbalagos.com"><img src="https://img.shields.io/badge/BASE-carlosvillalbalagos.com-2ee6f0?style=for-the-badge&labelColor=070d14&logo=cloudflare&logoColor=2ee6f0" alt="Web"></a>
   <a href="https://cti.carlosvillalbalagos.com"><img src="https://img.shields.io/badge/PANEL-NEWS_CTI-2ee6f0?style=for-the-badge&labelColor=070d14" alt="Panel News CTI"></a>
   <a href="https://dfir.carlosvillalbalagos.com"><img src="https://img.shields.io/badge/PANEL-FTRIAGE_DFIR-2ee6f0?style=for-the-badge&labelColor=070d14" alt="Panel FtriageDFIR"></a>
+  <a href="https://box.carlosvillalbalagos.com"><img src="https://img.shields.io/badge/PANEL-MALPIPE_BOX-2ee6f0?style=for-the-badge&labelColor=070d14" alt="Panel Malpipe"></a>
   <a href="https://linkedin.com/in/carlos-villalba-lagos"><img src="https://img.shields.io/badge/ENLACE-LINKEDIN-0e7490?style=for-the-badge&labelColor=070d14&logo=linkedin&logoColor=2ee6f0" alt="LinkedIn"></a>
   <a href="mailto:contact@carlosvillalbalagos.com"><img src="https://img.shields.io/badge/CANAL-CORREO-2a3d4d?style=for-the-badge&labelColor=070d14&logo=maildotru&logoColor=8ea6bb" alt="Contacto"></a>
 </p>
@@ -22,7 +23,7 @@
 ## `00 // FICHA DE IDENTIFICACIÓN`
 
 ```yaml
-title: Analista SOC con perfil DFIR e incident response
+title: Tecnico de ciberseguridad (SIEM y automatizacion) con perfil DFIR e incident response
 id: ch4rl13-2026
 status: operativo
 description: |
@@ -35,6 +36,7 @@ references:
     - https://carlosvillalbalagos.com
     - https://cti.carlosvillalbalagos.com
     - https://dfir.carlosvillalbalagos.com
+    - https://box.carlosvillalbalagos.com
 logsource:
     product: soc
     service: operativo
@@ -42,13 +44,14 @@ logsource:
 detection:
     selection_rol:
         funcion:
+            - administracion de SIEM (Splunk) e ingesta de logs
             - triaje y escalado de alertas
             - investigacion y analisis de causa raiz
             - ingenieria de deteccion
             - automatizacion de la respuesta (SOAR)
             - triage forense y cadena de custodia
     selection_prueba:
-        operaciones_en_produccion: 2
+        operaciones_en_produccion: 3
         repositorios_publicos: 10
     filter_ruido:
         proyecto: teoria & practica
@@ -105,7 +108,7 @@ Splunk desde cero en Docker Compose, con ficheros versionados en vez de clics: i
 ▸ [código](https://github.com/BlueShield-Ch4rl13/SplunkLab)
 
 <img src="https://img.shields.io/badge/OP--07-070d14?style=flat-square&labelColor=070d14&color=f0a72e" alt="OP-07"> **RESPONSELAB** &nbsp; <img src="https://img.shields.io/badge/%E2%97%90_LISTO_PARA_DESPLEGAR-070d14?style=flat-square&labelColor=070d14&color=f0a72e" alt="Listo para desplegar"><br>
-Respuesta a incidentes como código, multi-SIEM y multi-SOAR. Ejecuta los playbooks de DetectionLab con una política escrita en código: una acción solo va sola si su **radio es estrecho y se puede deshacer**. Nada que afecte a una cuenta o a toda la organización se ejecuta sin una persona, y un controlador de dominio o un HMI de planta no se tocan solos. Motor multi-cliente (MSSP), la misma lógica exportada a cinco SOAR y diez ataques simulados con alertas reales que el CI repite en cada cambio. Listo para el servidor de `OP-10`: un script genera los secretos y la configuración de Wazuh, Splunk y pfSense, y el CI levanta el despliegue con TLS, lo comprueba, hace una copia y la restaura en cada cambio.<br>
+Respuesta a incidentes como código, multi-SIEM y multi-SOAR. Ejecuta los playbooks de DetectionLab con una política escrita en código: una acción solo va sola si su **radio es estrecho y se puede deshacer**. Nada que afecte a una cuenta o a toda la organización se ejecuta sin una persona, y un controlador de dominio o un HMI de planta no se tocan solos. Motor multi-cliente (MSSP), la misma lógica exportada a cinco SOAR y diez ataques simulados con alertas reales que el CI repite en cada cambio. Listo para el servidor de `OP-08`: un script genera los secretos y la configuración de Wazuh, Splunk y pfSense, y el CI levanta el despliegue con TLS, lo comprueba, hace una copia y la restaura en cada cambio.<br>
 <img src="https://img.shields.io/badge/-Python-070d14?style=flat-square&logo=python&logoColor=2ee6f0" alt="Python"> <img src="https://img.shields.io/badge/-FastAPI-070d14?style=flat-square&logo=fastapi&logoColor=2ee6f0" alt="FastAPI"> <img src="https://img.shields.io/badge/-Wazuh-1b2e3c?style=flat-square" alt="Wazuh"> <img src="https://img.shields.io/badge/-Sentinel-070d14?style=flat-square&logo=microsoftazure&logoColor=2ee6f0" alt="Sentinel"> <img src="https://img.shields.io/badge/-Cortex_XSOAR-1b2e3c?style=flat-square" alt="Cortex XSOAR"> <img src="https://img.shields.io/badge/-Shuffle-1b2e3c?style=flat-square" alt="Shuffle"> <img src="https://img.shields.io/badge/-Defender_·_CrowdStrike-1b2e3c?style=flat-square" alt="Defender y CrowdStrike"> &nbsp; `239 reglas` `54 acciones` `1205 pruebas` `RGPD · NIS2 · DORA`<br>
 ▸ [código](https://github.com/BlueShield-Ch4rl13/ResponseLab)
 
@@ -130,10 +133,10 @@ Respuesta a incidentes como código, multi-SIEM y multi-SOAR. Ejecuta los playbo
 
 | | Operación | Qué será | Estado |
 |---|---|---|---|
-| **`OP-08`** | Writeups de incidente | Casos reales anonimizados con metodología NIST SP 800-61, mapeo ATT&CK, TLP y línea temporal desde los artefactos. | `EN REDACCIÓN` |
-| **`OP-10`** | [HomeLab](https://github.com/BlueShield-Ch4rl13/HomeLab) | Servidor propio en casa donde corren a la vez todas las operaciones, con la red segmentada por VLAN como en `OP-04`: el SOC, el atacante y las víctimas sin apagar nada, ResponseLab conteniendo de verdad y un subdominio público para ver los datos. | `EN MONTAJE` |
+| **`OP-08`** | [HomeLab](https://github.com/BlueShield-Ch4rl13/HomeLab) | Servidor propio en casa donde corren a la vez todas las operaciones, con la red segmentada por VLAN como en `OP-04`: el SOC, el atacante y las víctimas sin apagar nada, ResponseLab conteniendo de verdad y un subdominio público para ver los datos. | `EN MONTAJE` |
+| **`RPT-02`** | [Informe de incidente](https://carlosvillalbalagos.com/writeups/rpt-02) | Un equipo comprometido en laboratorio, examinado con FtriageDFIR de principio a fin: metodología NIST SP 800-61, cadena de custodia, línea temporal, mapeo ATT&CK y veredicto con nivel de confianza. | `EN REDACCIÓN` |
 
-<sub>Entregadas desde la última revisión: el <b>panel de Malpipe</b> (antes <code>OP-09</code>, ahora en <code>OP-03</code>: <a href="https://box.carlosvillalbalagos.com">box.carlosvillalbalagos.com</a>) y <code>OP-07</code>, ResponseLab, listo para el servidor. Nada de esto es teoría: todo se despliega en el servidor de <code>OP-10</code>.</sub>
+<sub>Ya publicado: <a href="https://carlosvillalbalagos.com/writeups/rpt-01"><code>RPT-01</code>, la metodología de scoring de IoCs de News CTI</a>. Entregados desde la última revisión: el <b>panel de Malpipe</b> en <code>OP-03</code> (<a href="https://box.carlosvillalbalagos.com">box.carlosvillalbalagos.com</a>) y <code>OP-07</code>, ResponseLab, listo para el servidor. Nada de esto es teoría: todo se despliega en el servidor de <code>OP-08</code>.</sub>
 
 ## `05 // ARSENAL`
 

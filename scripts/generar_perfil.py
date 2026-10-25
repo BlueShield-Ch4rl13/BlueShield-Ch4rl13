@@ -38,7 +38,7 @@ MARCA_FIN = "<!-- FIN:DESPLIEGUES -->"
 
 # Operaciones con panel publico. Se cuentan aparte porque es la cifra que
 # de verdad diferencia el perfil.
-PANELES = 2
+PANELES = 3  # cti, dfir y box (Malpipe)
 
 # Ventana de "commits recientes" y autores que no cuentan como trabajo propio
 # (los bots que refrescan datos cada pocas horas inflarian la cifra).
