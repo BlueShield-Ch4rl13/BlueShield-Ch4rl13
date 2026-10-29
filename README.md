@@ -122,11 +122,11 @@ Respuesta a incidentes como código, multi-SIEM y multi-SOAR. Ejecuta los playbo
 
 <!-- Este bloque lo reescribe scripts/generar_perfil.py cada día. No editar a mano. -->
 <!-- INICIO:DESPLIEGUES -->
-`29/10` **BlueShield-Ch4rl13** — Merge pull request #2 from BlueShield-Ch4rl13/dependabot/github_actions/actions-25c580fd63 · [`e129744`](https://github.com/BlueShield-Ch4rl13/BlueShield-Ch4rl13/commit/e129744cbace177ae7ecc7d0cbbaaff66d49048c)<br>
-`29/10` **ScriptNewsCTI** — Merge pull request #7 from BlueShield-Ch4rl13/dependabot/github_actions/actions-9dc935b0db · [`e7647ab`](https://github.com/BlueShield-Ch4rl13/ScriptNewsCTI/commit/e7647ab6c29e7ae76b1053cc9ede0378f0816dd1)<br>
-`29/10` **ScriptNewsCTI** — Merge pull request #5 from BlueShield-Ch4rl13/dependabot/pip/requests-2.34.2 · [`f2fb10b`](https://github.com/BlueShield-Ch4rl13/ScriptNewsCTI/commit/f2fb10bfaa4b8c6dbb85d5c954ae7fafa7c615f0)<br>
-`29/10` **ResponseLab** — Merge pull request #16 from BlueShield-Ch4rl13/sincronizacion/auto · [`6ea7255`](https://github.com/BlueShield-Ch4rl13/ResponseLab/commit/6ea7255e30ba7c8cd8fec561c8e3ee0ffdb51b91)<br>
-`29/10` **BlueShield-Ch4rl13** — Merge pull request #3 from BlueShield-Ch4rl13/malpipe-y-responselab · [`c48c24f`](https://github.com/BlueShield-Ch4rl13/BlueShield-Ch4rl13/commit/c48c24f96c15b901becf722508aec89cbd7470e1)
+`29/10` **BlueShield-Ch4rl13** — Merge pull request #4 from BlueShield-Ch4rl13/ci-sin-carreras · [`0ac2dee`](https://github.com/BlueShield-Ch4rl13/BlueShield-Ch4rl13/commit/0ac2dee087ebb5b56a5deda324f19b4dce496737)<br>
+`29/10` **BlueShield-Ch4rl13** — CI del perfil: sin ejecuciones simultáneas y rebase antes de publicar · [`171c634`](https://github.com/BlueShield-Ch4rl13/BlueShield-Ch4rl13/commit/171c634c8160f09f1416490f8c977e72bbd818f9)<br>
+`29/10` **Malpipe** — Merge pull request #7 from BlueShield-Ch4rl13/dependabot/npm_and_yarn/portal-b6c30b6bca · [`ce8ace4`](https://github.com/BlueShield-Ch4rl13/Malpipe/commit/ce8ace4d4193493e03d3d51ab6a4137c6fa6d41b)<br>
+`29/10` **Malpipe** — Merge pull request #6 from BlueShield-Ch4rl13/dependabot/github_actions/actions-58ba8771c9 · [`a94b1cd`](https://github.com/BlueShield-Ch4rl13/Malpipe/commit/a94b1cd2e98510422b2259272cbbfaecec36333c)<br>
+`29/10` **Malpipe** — Merge pull request #3 from BlueShield-Ch4rl13/dependabot/pip/python-db35888ead · [`9fbb827`](https://github.com/BlueShield-Ch4rl13/Malpipe/commit/9fbb827a5b9527bffa9f5f1b88d9b0e082f3a8c5)
 <!-- FIN:DESPLIEGUES -->
 
 ## `04 // PRÓXIMAS OPERACIONES`
