@@ -122,11 +122,11 @@ Respuesta a incidentes como código, multi-SIEM y multi-SOAR. Ejecuta los playbo
 
 <!-- Este bloque lo reescribe scripts/generar_perfil.py cada día. No editar a mano. -->
 <!-- INICIO:DESPLIEGUES -->
-`29/10` **BlueShield-Ch4rl13** — Merge pull request #3 from BlueShield-Ch4rl13/malpipe-y-responselab · [`c48c24f`](https://github.com/BlueShield-Ch4rl13/BlueShield-Ch4rl13/commit/c48c24f96c15b901becf722508aec89cbd7470e1)<br>
-`29/10` **Infra-SocAnalyst** — Merge pull request #2 from BlueShield-Ch4rl13/seguridad-2026-10-25 · [`7d304fa`](https://github.com/BlueShield-Ch4rl13/Infra-SocAnalyst/commit/7d304fa119d8436b0f1655da5ba0de4705e7a1e8)<br>
-`29/10` **SplunkLab** — Merge pull request #2 from BlueShield-Ch4rl13/seguridad-2026-10-25 · [`9664a39`](https://github.com/BlueShield-Ch4rl13/SplunkLab/commit/9664a3907a5315bda79380999b57b476c49c4a5a)<br>
-`29/10` **Malpipe** — Merge pull request #8 from BlueShield-Ch4rl13/seguridad-2026-10-25 · [`27f55a4`](https://github.com/BlueShield-Ch4rl13/Malpipe/commit/27f55a4d8a90880fdb3c52a169c46d2895f0bedf)<br>
-`29/10` **FtriageDFIR** — Merge pull request #5 from BlueShield-Ch4rl13/seguridad-2026-10-25 · [`a2e3823`](https://github.com/BlueShield-Ch4rl13/FtriageDFIR/commit/a2e3823138aeb45e6ef92e0cc1531de4c8933603)
+`29/10` **BlueShield-Ch4rl13** — Merge pull request #2 from BlueShield-Ch4rl13/dependabot/github_actions/actions-25c580fd63 · [`e129744`](https://github.com/BlueShield-Ch4rl13/BlueShield-Ch4rl13/commit/e129744cbace177ae7ecc7d0cbbaaff66d49048c)<br>
+`29/10` **ScriptNewsCTI** — Merge pull request #7 from BlueShield-Ch4rl13/dependabot/github_actions/actions-9dc935b0db · [`e7647ab`](https://github.com/BlueShield-Ch4rl13/ScriptNewsCTI/commit/e7647ab6c29e7ae76b1053cc9ede0378f0816dd1)<br>
+`29/10` **ScriptNewsCTI** — Merge pull request #5 from BlueShield-Ch4rl13/dependabot/pip/requests-2.34.2 · [`f2fb10b`](https://github.com/BlueShield-Ch4rl13/ScriptNewsCTI/commit/f2fb10bfaa4b8c6dbb85d5c954ae7fafa7c615f0)<br>
+`29/10` **ResponseLab** — Merge pull request #16 from BlueShield-Ch4rl13/sincronizacion/auto · [`6ea7255`](https://github.com/BlueShield-Ch4rl13/ResponseLab/commit/6ea7255e30ba7c8cd8fec561c8e3ee0ffdb51b91)<br>
+`29/10` **BlueShield-Ch4rl13** — Merge pull request #3 from BlueShield-Ch4rl13/malpipe-y-responselab · [`c48c24f`](https://github.com/BlueShield-Ch4rl13/BlueShield-Ch4rl13/commit/c48c24f96c15b901becf722508aec89cbd7470e1)
 <!-- FIN:DESPLIEGUES -->
 
 ## `04 // PRÓXIMAS OPERACIONES`
