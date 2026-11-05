@@ -1,0 +1,44 @@
+name: Diagnóstico web (temporal)
+# Rama temporal: comprueba en vivo las webs y el DNS (todo información pública)
+on:
+  push:
+    branches: [diagnostico-web]
+permissions:
+  contents: read
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Webs y DNS
+        run: |
+          python3 - <<'PY'
+          import sys
+          sys.path.insert(0, "scripts")
+          import resumen_semanal as r
+          fallos, tuyo = r.web()
+          print("== FALLOS WEB"); [print(" -", x) for x in fallos] or print(" (ninguno)")
+          print("== PENDIENTE"); [print(" -", x) for x in tuyo] or print(" (nada)")
+          print("== CABECERAS")
+          for url in r.SITIOS:
+              codigo, _, cab = r.pedir(url)
+              print(url, codigo, "cert:", r.dias_certificado(url.split("/")[2]), "días")
+              for c in ("content-security-policy", "strict-transport-security", "x-content-type-options",
+                        "referrer-policy", "permissions-policy", "x-frame-options", "cross-origin-opener-policy",
+                        "access-control-allow-origin"):
+                  print(f"   {c}: {cab.get(c, '—')[:160]}")
+          for url in ["https://carlosvillalbalagos.com/writeups/RPT-02_TriageFtriageDFIR_CarlosVillalba.pdf",
+                      "https://carlosvillalbalagos.com/assets/CarlosVillalbanew.jpg",
+                      "https://carlosvillalbalagos.com/README.md",
+                      "https://cti.carlosvillalbalagos.com/utils.py", "https://cti.carlosvillalbalagos.com/README.md",
+                      "https://dfir.carlosvillalbalagos.com/build_dashboard.py",
+                      "https://box.carlosvillalbalagos.com/motor/malpipe.json",
+                      "https://main-web-2ci.pages.dev/"]:
+              print(url, r.pedir(url)[0])
+          print("== DNS")
+          for n, t in [("_dmarc.carlosvillalbalagos.com", "TXT"), ("carlosvillalbalagos.com", "TXT"), ("carlosvillalbalagos.com", "CAA")]:
+              print(n, t, r.dns(n, t))
+          PY
