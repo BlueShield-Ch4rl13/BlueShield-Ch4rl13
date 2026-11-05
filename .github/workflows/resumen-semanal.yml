@@ -1,0 +1,46 @@
+name: Resumen semanal a Discord
+
+# Cada lunes, lo de los últimos 7 días de todos los repos: fallos, novedades,
+# PR pendientes, vulnerabilidades nuevas de tu stack (News CTI) y versiones
+# nuevas de lo fijado. Lo hace scripts/resumen_semanal.py, que solo lee.
+#
+# Secretos (Settings → Secrets and variables → Actions):
+#   DISCORD_WEBHOOK  URL del webhook de Discord (obligatorio)
+#   RESUMEN_TOKEN    token fine-grained de solo lectura para ver main-web y las
+#                    alertas de seguridad (sin él, solo los repos públicos)
+on:
+  schedule:
+    - cron: "17 7 * * 1"   # lunes 07:17 UTC (08:17 en España en invierno, 09:17 en verano)
+  workflow_dispatch:
+    inputs:
+      dias:
+        description: "Cuántos días hacia atrás"
+        default: "7"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: resumen-semanal
+  cancel-in-progress: false
+
+jobs:
+  resumen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: Resumen y envío
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          RESUMEN_TOKEN: ${{ secrets.RESUMEN_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
+          RESUMEN_DIAS: ${{ inputs.dias || '7' }}
+        run: python3 scripts/resumen_semanal.py
