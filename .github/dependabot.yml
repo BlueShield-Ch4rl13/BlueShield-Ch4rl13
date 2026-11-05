@@ -1,7 +1,7 @@
-# Mantiene al día los SHA de las acciones del workflow del perfil.
+# Mantiene al día, cada semana, los SHA de las acciones de los workflows del perfil.
 version: 2
 updates:
   - package-ecosystem: github-actions
     directory: /
-    schedule: {interval: monthly}
+    schedule: {interval: weekly}
     groups: {actions: {patterns: ["*"]}}
