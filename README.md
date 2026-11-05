@@ -122,11 +122,11 @@ Respuesta a incidentes como código, multi-SIEM y multi-SOAR. Ejecuta los playbo
 
 <!-- Este bloque lo reescribe scripts/generar_perfil.py cada día. No editar a mano. -->
 <!-- INICIO:DESPLIEGUES -->
-`29/10` **BlueShield-Ch4rl13** — Merge pull request #4 from BlueShield-Ch4rl13/ci-sin-carreras · [`0ac2dee`](https://github.com/BlueShield-Ch4rl13/BlueShield-Ch4rl13/commit/0ac2dee087ebb5b56a5deda324f19b4dce496737)<br>
-`29/10` **BlueShield-Ch4rl13** — CI del perfil: sin ejecuciones simultáneas y rebase antes de publicar · [`171c634`](https://github.com/BlueShield-Ch4rl13/BlueShield-Ch4rl13/commit/171c634c8160f09f1416490f8c977e72bbd818f9)<br>
-`29/10` **Malpipe** — Merge pull request #7 from BlueShield-Ch4rl13/dependabot/npm_and_yarn/portal-b6c30b6bca · [`ce8ace4`](https://github.com/BlueShield-Ch4rl13/Malpipe/commit/ce8ace4d4193493e03d3d51ab6a4137c6fa6d41b)<br>
-`29/10` **Malpipe** — Merge pull request #6 from BlueShield-Ch4rl13/dependabot/github_actions/actions-58ba8771c9 · [`a94b1cd`](https://github.com/BlueShield-Ch4rl13/Malpipe/commit/a94b1cd2e98510422b2259272cbbfaecec36333c)<br>
-`29/10` **Malpipe** — Merge pull request #3 from BlueShield-Ch4rl13/dependabot/pip/python-db35888ead · [`9fbb827`](https://github.com/BlueShield-Ch4rl13/Malpipe/commit/9fbb827a5b9527bffa9f5f1b88d9b0e082f3a8c5)
+`05/11` **FtriageDFIR** — Prueba de la CSP con el analizador de HTML en vez de expresiones regulares · [`27d1f2d`](https://github.com/BlueShield-Ch4rl13/FtriageDFIR/commit/27d1f2dedd34386b5aaf41883f05cfb2e672b8c2)<br>
+`05/11` **FtriageDFIR** — Panel: la tabla de artefactos con nodos y textContent (aviso de CodeQL) · [`cd7ff31`](https://github.com/BlueShield-Ch4rl13/FtriageDFIR/commit/cd7ff313f686afb73deae59e57aee25627b00a03)<br>
+`04/11` **FtriageDFIR** — Seguridad: la recogida no sigue enlaces de usuario, panel sin JavaScript en línea · [`8a04c8d`](https://github.com/BlueShield-Ch4rl13/FtriageDFIR/commit/8a04c8d415a89a617d39059ea6f41511b5faf1de)<br>
+`30/10` **FtriageDFIR** — CodeQL: Python, JavaScript del panel y workflows · [`76ccebf`](https://github.com/BlueShield-Ch4rl13/FtriageDFIR/commit/76ccebfd0eee0855322ec3a728b313dcc02972a8)<br>
+`29/10` **BlueShield-Ch4rl13** — Merge pull request #4 from BlueShield-Ch4rl13/ci-sin-carreras · [`0ac2dee`](https://github.com/BlueShield-Ch4rl13/BlueShield-Ch4rl13/commit/0ac2dee087ebb5b56a5deda324f19b4dce496737)
 <!-- FIN:DESPLIEGUES -->
 
 ## `04 // PRÓXIMAS OPERACIONES`
