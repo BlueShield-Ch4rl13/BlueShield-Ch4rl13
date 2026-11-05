@@ -46,6 +46,13 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/estado.svg README.md
           git commit -m "actualiza estado del puesto y ultimos despliegues"
-          # Si main avanzó mientras tanto, se reaplica encima (gana lo recién generado)
-          git pull --rebase -X theirs origin main
+          # Si main avanzó mientras tanto, se reaplica encima. Sin -X theirs: con
+          # él, un README generado antes de fusionar un PR deshacía ese PR. Si hay
+          # conflicto no se publica; la siguiente ejecución (cada día a las 06:00
+          # UTC, o a mano) lo regenera ya sobre el README nuevo.
+          if ! git pull --rebase origin main; then
+            git rebase --abort
+            echo "::warning::main ha cambiado en lo mismo que esta ejecución: no se publica para no deshacer nada."
+            exit 0
+          fi
           git push
