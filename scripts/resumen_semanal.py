@@ -267,8 +267,14 @@ def recoger(repo: dict) -> dict:
     if cabeza:
         runs = gh(f"{base}/commits/{cabeza['sha']}/check-runs", per_page=100)
         if runs is not None:
-            r["ci_rojo"] = sorted({c["name"] for c in runs.get("check_runs", [])
-                                   if c.get("conclusion") in ("failure", "timed_out", "cancelled", "action_required")})
+            # Solo la última de cada comprobación: si se relanzó y pasó, no está en rojo
+            ultima: dict[str, dict] = {}
+            for c in runs.get("check_runs", []):
+                previa = ultima.get(c["name"])
+                if previa is None or (c.get("started_at") or "") > (previa.get("started_at") or ""):
+                    ultima[c["name"]] = c
+            r["ci_rojo"] = sorted(n for n, c in ultima.items()
+                                  if c.get("conclusion") in ("failure", "timed_out", "cancelled", "action_required"))
 
     # Workflows de main que han fallado en la semana (también los bots y los
     # programados). Los de las ramas de los PR no: fallar ahí es parte del trabajo.
@@ -276,7 +282,8 @@ def recoger(repo: dict) -> dict:
     r["runs_fallidos"] = {}
     ultima: dict[str, str] = {}
     for run in (corridas or {}).get("workflow_runs", []):  # de la más nueva a la más vieja
-        wf = run.get("name") or "?"
+        # Las de Dependabot llevan un número distinto cada vez ("… - Update #123"): se juntan
+        wf = re.sub(r"\s*-\s*Update #\d+$", "", run.get("name") or "?")
         ultima.setdefault(wf, run.get("conclusion") or run.get("status") or "")
         if run.get("conclusion") in ("failure", "timed_out"):
             r["runs_fallidos"][wf] = r["runs_fallidos"].get(wf, 0) + 1
@@ -437,12 +444,16 @@ def componer() -> tuple[list[dict], dict]:
     fallos_web, tuyo_web = web()
 
     fallos: list[str] = []
+    resueltos: list[str] = []
     for d in datos:
         if d["ci_rojo"]:
             fallos.append(f"**{d['nombre']}**: CI de main en rojo ({md(', '.join(d['ci_rojo']), 120)})")
         for wf, n in sorted(d["runs_fallidos"].items()):
-            ahora = " (la última ya pasa)" if d["runs_ahora"].get(wf) == "success" else " y **sigue fallando**"
-            fallos.append(f"**{d['nombre']}**: «{md(wf, 50)}» ha fallado {n} {'vez' if n == 1 else 'veces'} en main{ahora}")
+            veces = f"{n} {'vez' if n == 1 else 'veces'}"
+            if d["runs_ahora"].get(wf) == "success":
+                resueltos.append(f"**{d['nombre']}**: «{md(wf, 50)}» falló {veces} y la última ya pasa")
+            else:
+                fallos.append(f"**{d['nombre']}**: «{md(wf, 50)}» ha fallado {veces} en main y **sigue fallando**")
         for tipo, a in d["alertas"].items():
             if not a:
                 continue
@@ -518,6 +529,7 @@ def componer() -> tuple[list[dict], dict]:
                "color": rojo if fallos else (naranja if pendiente else verde),
                "url": f"https://github.com/{USUARIO}"}]
     embeds += trocear("🔴 Fallos", fallos, rojo)
+    embeds += trocear("Fallaron esta semana, pero ya pasan", resueltos, verde)
     embeds += trocear("Novedades", novedades or ["Ninguna esta semana."], azul)
     embeds += trocear("Pendiente tuyo", pendiente, naranja)
     if vulns is not None and vulns[0]:
@@ -527,7 +539,7 @@ def componer() -> tuple[list[dict], dict]:
     embeds[-1]["footer"] = {"text": f"{USUARIO}/{USUARIO} · scripts/resumen_semanal.py"}
     embeds[-1]["timestamp"] = AHORA.isoformat()
 
-    cifras = {"repos": len(datos), "fallos": len(fallos), "pendientes": len(pendiente),
+    cifras = {"repos": len(datos), "fallos": len(fallos), "resueltos": len(resueltos), "pendientes": len(pendiente),
               "deshechas": len(deshechas), "vulns_stack": len(vulns[0]) if vulns else 0, "embeds": len(embeds)}
     return embeds, cifras
 
