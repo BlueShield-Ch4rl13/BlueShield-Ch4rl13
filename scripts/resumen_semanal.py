@@ -81,12 +81,13 @@ GUARDIAS = [
     ("B-10", "ScriptNewsCTI", 13, "utils.py", "def _celda_csv", False),
     ("B-11", "ScriptNewsCTI", 13, "enrich.py", "_RE_HASH", False),
     ("I-05", "ScriptNewsCTI", 13, "avisos.py", "def _sin_entidades", False),
-    ("BOT", "ScriptNewsCTI", 13, ".github/workflows/cti-update.yml", "-X theirs", True),
+    ("BOT", "ScriptNewsCTI", 13, ".github/workflows/cti-update.yml", "git pull --rebase -X theirs", True),
     ("B-16", "Infra-SocAnalyst", 4, "compose/soar-stack.yml", "elasticsearch:7.17.29", False),
     ("I-04", "Infra-SocAnalyst", 4, "shuffle/nodos/ioc_python.py", "Shuffle pega el cuerpo", False),
-    ("B-03", "main-web", 8, ".assetsignore", "assets/CarlosVillalbanew.jpg", False),
+    ("B-03", "main-web", 8, "assets/CV_CarlosVillalba.pdf", "carlos-villalba-lagos", False),
+    ("I-06", "main-web", 8, ".assetsignore", "README.md", False),
     ("B-13", "BlxckPython", 2, "Burp/bhp_bing.py", "import os", False),
-    ("BOT", USUARIO, 5, ".github/workflows/actualizar-perfil.yml", "-X theirs", True),
+    ("BOT", USUARIO, 5, ".github/workflows/actualizar-perfil.yml", "git pull --rebase -X theirs", True),
 ]
 
 # Lo que usas, para filtrar las vulnerabilidades de News CTI (expresiones
